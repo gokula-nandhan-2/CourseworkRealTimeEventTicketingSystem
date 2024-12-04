@@ -5,9 +5,9 @@ public class Vendor implements Runnable {
     private int ticketReleaseRate;
     private TicketPool ticketPool;
 
-    public Vendor(int totalTickets, int ticketReleaseRate, TicketPool ticketPool) {
-        this.totalTickets = totalTickets;
-        this.ticketReleaseRate = ticketReleaseRate;
+    public Vendor(Configuration totalTickets, Configuration ticketReleaseRate, TicketPool ticketPool) {
+        this.totalTickets = totalTickets.getTotalTicket();
+        this.ticketReleaseRate = ticketReleaseRate.getTicketReleaseRate();
         this.ticketPool = ticketPool;
     }
 
@@ -22,7 +22,6 @@ public class Vendor implements Runnable {
                 throw new RuntimeException(e);
             }
         }
-
-
     }
 }
+

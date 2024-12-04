@@ -24,28 +24,28 @@ public class Main {
         Configuration loadedConfig = configureDetails.loadFile();
 
 
-        System.out.println("\n"+configureDetails.loadFile().getTotalTicket());
-        System.out.println(configureDetails.loadFile().getTicketReleaseRate());
-        System.out.println(configureDetails.loadFile().getCustomerRetrievalRate());
-        System.out.println(configureDetails.loadFile().getMaxTicketCapacity());
+        //System.out.println("\n"+configureDetails.loadFile().getTotalTicket());
+        //System.out.println(configureDetails.loadFile().getTicketReleaseRate());
+        //System.out.println(configureDetails.loadFile().getCustomerRetrievalRate());
+        //System.out.println(configureDetails.loadFile().getMaxTicketCapacity());
 
         TicketPool ticketPool = new TicketPool(loadedConfig);
 
         Vendor[] vendors = new Vendor[10]; // Creating array of vendors
         for (int i = 0; i < vendors.length; i++) {
-            vendors[i] = new Vendor(20, 5, ticketPool);
+            Configuration tempConfig = new Configuration(totalTickets / vendors.length, ticketReleaseRate, 0, 0);
+            vendors[i] = new Vendor(tempConfig, tempConfig, ticketPool);
             Thread vendorThread = new Thread(vendors[i], "Vendor ID-" + i);
             vendorThread.start();
         }
 
         Customer[] customers = new Customer[10]; // Creating array of customers
         for (int i = 0; i < customers.length; i++) {
-            customers[i] = new Customer(5, 6, ticketPool); // Rerieve tickets from the pool
+            Configuration tempConfig = new Configuration(0, 0, customerRetrievalRate, 0);
+            customers[i] = new Customer(5,tempConfig, ticketPool); // Rerieve tickets from the pool
             Thread customerThread = new Thread(customers[i], "Customer ID-" + i);
             customerThread.start();
         }
-
-
 
     }
 }
