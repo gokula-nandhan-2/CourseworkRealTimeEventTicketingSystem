@@ -11,6 +11,19 @@ public class Configuration {
     private int customerRetrievalRate;
     private int maxTicketCapacity;
 
+
+
+    public Configuration(int customerRetrievalRate) {
+        this.customerRetrievalRate = customerRetrievalRate;
+    }
+
+
+    public Configuration(int totalTicket, int ticketReleaseRate) {
+        this.totalTicket = totalTicket;
+        this.ticketReleaseRate = ticketReleaseRate;
+    }
+
+
     public Configuration(int totalTicket, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
         this.totalTicket = totalTicket;
         this.ticketReleaseRate = ticketReleaseRate;
@@ -22,48 +35,47 @@ public class Configuration {
         return totalTicket;
     }
 
-    public void setTotalTicket(int totalTicket) {
-        this.totalTicket = totalTicket;
-    }
 
     public int getTicketReleaseRate() {
         return ticketReleaseRate;
     }
 
-    public void setTicketReleaseRate(int ticketReleaseRate) {
-        this.ticketReleaseRate = ticketReleaseRate;
-    }
 
     public int getCustomerRetrievalRate() {
         return customerRetrievalRate;
     }
 
-    public void setCustomerRetrievalRate(int customerRetrievalRate) {
-        this.customerRetrievalRate = customerRetrievalRate;
-    }
 
     public int getMaxTicketCapacity() {
         return maxTicketCapacity;
     }
 
-    public void setMaxTicketCapacity(int maxTicketCapacity) {
-        this.maxTicketCapacity = maxTicketCapacity;
-    }
 
     //save to json file
-    public void saveFile() {
+    public void saveFileToJson() {
         Gson gson = new Gson();
-        try (FileWriter writeFile = new FileWriter("configuration.txt")){
+        try (FileWriter writeFile = new FileWriter("configuration.json")){
             gson.toJson(this, writeFile);
         }catch (IOException e){
             throw new RuntimeException(e);
         }
     }
 
+    public void saveFileToTextFile() {
+        try (FileWriter writeToTextFile = new FileWriter("configuration.txt")) {
+            writeToTextFile.write("totalTickets : " + totalTicket + "\n");
+            writeToTextFile.write("ticketReleaseRate : " + ticketReleaseRate + "\n");
+            writeToTextFile.write("customerRetrievalRate : " + customerRetrievalRate + "\n");
+            writeToTextFile.write("maximumTicketCapacity : " + maxTicketCapacity + "\n");
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+
     //load details from json
-    public Configuration loadFile() {
+    public Configuration loadFileToJson() {
         Gson gson = new Gson();
-        try(FileReader readFile = new FileReader("configuration.txt")){
+        try(FileReader readFile = new FileReader("configuration.json")){
             return gson.fromJson(readFile, Configuration.class);
         }catch (IOException e){
             throw new RuntimeException(e);

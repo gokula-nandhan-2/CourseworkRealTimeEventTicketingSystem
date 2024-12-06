@@ -1,5 +1,7 @@
 package CLI.RealTimeEventingSystem;
 
+import java.time.LocalDateTime;
+
 public class Vendor implements Runnable {
     private int totalTickets;
     private int ticketReleaseRate;
@@ -15,6 +17,7 @@ public class Vendor implements Runnable {
     public void run() {
         for(int i = 0; i < totalTickets; i++) {
             Ticket ticket = new Ticket(i+1,"Kanguva",1000);
+            ticket.setReleasedDateTime(LocalDateTime.now());
             ticketPool.addTicket(ticket);
             try{
                 Thread.sleep(ticketReleaseRate * 1000);
