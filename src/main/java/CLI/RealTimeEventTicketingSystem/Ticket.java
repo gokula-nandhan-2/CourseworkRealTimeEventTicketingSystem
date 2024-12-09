@@ -1,7 +1,8 @@
-package CLI.RealTimeEventingSystem;
+package CLI.RealTimeEventTicketingSystem;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 
 public class Ticket {
     private int ticketID;
@@ -49,13 +50,16 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "TicketID :" + ticketID +
-                ", EventName='" + eventName + '\'' +
-                ", TicketPrice=" + ticketPrice +
-                ", ReleasedDateTime=" + releasedDateTime +
-                ", PurchasedDateTime=" + purchasedDateTime +
-                '}';
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        return "[" +
+                "TicketID : " + ticketID +
+                ", EventName : '" + eventName + '\'' +
+                ", TicketPrice : " + ticketPrice +
+                ", ReleasedDateTime : " + (releasedDateTime.format(formatter)) +
+                ", PurchasedDateTime : " + (purchasedDateTime != null ? purchasedDateTime.format(formatter) : "N/A") +
+                ']';
     }
 }
 

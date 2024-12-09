@@ -1,4 +1,4 @@
-package CLI.RealTimeEventingSystem;
+package CLI.RealTimeEventTicketingSystem;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import com.google.gson.Gson;
 
 public class Configuration {
-    private int totalTicket;
+    private int totalTickets;
     private int ticketReleaseRate;
     private int customerRetrievalRate;
     private int maxTicketCapacity;
@@ -18,21 +18,21 @@ public class Configuration {
     }
 
 
-    public Configuration(int totalTicket, int ticketReleaseRate) {
-        this.totalTicket = totalTicket;
+    public Configuration(int totalTickets, int ticketReleaseRate) {
+        this.totalTickets = totalTickets;
         this.ticketReleaseRate = ticketReleaseRate;
     }
 
 
-    public Configuration(int totalTicket, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
-        this.totalTicket = totalTicket;
+    public Configuration(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
+        this.totalTickets = totalTickets;
         this.ticketReleaseRate = ticketReleaseRate;
         this.customerRetrievalRate = customerRetrievalRate;
         this.maxTicketCapacity = maxTicketCapacity;
     }
 
     public int getTotalTicket() {
-        return totalTicket;
+        return totalTickets;
     }
 
 
@@ -63,7 +63,7 @@ public class Configuration {
 
     public void saveFileToTextFile() {
         try (FileWriter writeToTextFile = new FileWriter("configuration.txt")) {
-            writeToTextFile.write("totalTickets : " + totalTicket + "\n");
+            writeToTextFile.write("totalTickets : " + totalTickets + "\n");
             writeToTextFile.write("ticketReleaseRate : " + ticketReleaseRate + "\n");
             writeToTextFile.write("customerRetrievalRate : " + customerRetrievalRate + "\n");
             writeToTextFile.write("maximumTicketCapacity : " + maxTicketCapacity + "\n");
@@ -73,7 +73,7 @@ public class Configuration {
     }
 
     //load details from json
-    public Configuration loadFileToJson() {
+    public Configuration loadFileFromJson() {
         Gson gson = new Gson();
         try(FileReader readFile = new FileReader("configuration.json")){
             return gson.fromJson(readFile, Configuration.class);
@@ -81,6 +81,4 @@ public class Configuration {
             throw new RuntimeException(e);
         }
     }
-
-
 }
