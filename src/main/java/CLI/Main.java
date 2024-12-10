@@ -1,4 +1,4 @@
-package CLI.RealTimeEventTicketingSystem;
+package CLI;
 
 import java.util.*;
 
@@ -220,15 +220,3 @@ public class Main {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,8 +1,9 @@
-package CLI.RealTimeEventTicketingSystem;
+package coursework.oop.RealTimeEventTicketingSystem.entity;
 
+
+import coursework.oop.RealTimeEventTicketingSystem.configuration.Configuration;
 
 import java.time.LocalDateTime;
-
 
 
 public class Customer implements Runnable {
@@ -20,16 +21,14 @@ public class Customer implements Runnable {
     }
 
 
-
-
     @Override
-    public void run(){
-        for(int i = 0; i < customerTicketQuantity && running ; i++){
+    public void run() {
+        for (int i = 0; i < customerTicketQuantity && running; i++) {
             Ticket ticket = ticketPool.buyTicket();
-            if(ticket != null){
+            if (ticket != null) {
                 ticket.setPurchasedDateTime(LocalDateTime.now());
             }
-            try{
+            try {
                 Thread.sleep(customerRetrievalRate * 1000);
             } catch (InterruptedException e) {
                 if (!running)

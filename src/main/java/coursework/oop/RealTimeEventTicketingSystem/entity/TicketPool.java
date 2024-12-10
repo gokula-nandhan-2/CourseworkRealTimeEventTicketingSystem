@@ -1,4 +1,6 @@
-package CLI.RealTimeEventTicketingSystem;
+package coursework.oop.RealTimeEventTicketingSystem.entity;
+
+import coursework.oop.RealTimeEventTicketingSystem.configuration.Configuration;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

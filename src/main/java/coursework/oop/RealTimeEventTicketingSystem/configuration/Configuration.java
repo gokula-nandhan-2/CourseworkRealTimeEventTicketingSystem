@@ -1,4 +1,4 @@
-package CLI.RealTimeEventTicketingSystem;
+package coursework.oop.RealTimeEventTicketingSystem.configuration;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -80,5 +80,9 @@ public class Configuration {
         }catch (IOException e){
             throw new RuntimeException(e);
         }
+    }
+
+    public int getTotalTickets() {
+        return totalTickets;
     }
 }

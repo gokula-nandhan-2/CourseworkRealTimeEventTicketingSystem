@@ -1,4 +1,5 @@
-package CLI.RealTimeEventTicketingSystem;
+package CLI;
+
 
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,12 +38,3 @@ public class Vendor implements Runnable {
         this.running = false; // Set the flag to false to stop the thread execution
     }
 }
-
-
-
-
-
-
-
-
-
