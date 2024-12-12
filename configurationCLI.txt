@@ -1,4 +1,4 @@
 totalTickets : 20
-ticketReleaseRate : 4
-customerRetrievalRate : 6
-maximumTicketCapacity : 6
+ticketReleaseRate : 5
+customerRetrievalRate : 9
+maximumTicketCapacity : 5

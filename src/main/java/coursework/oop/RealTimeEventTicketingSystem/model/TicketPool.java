@@ -1,6 +1,4 @@
-package coursework.oop.RealTimeEventTicketingSystem.entity;
-
-import coursework.oop.RealTimeEventTicketingSystem.configuration.Configuration;
+package coursework.oop.RealTimeEventTicketingSystem.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,6 +18,13 @@ public class TicketPool {
     }
 
 
+    public int getTicketPoolSize() {
+        return ticketPool.size();
+    }
+
+    public int getRemainingCapacity() {
+        return maximumCapacity - ticketPool.size();
+    }
 
 
 
@@ -29,8 +34,8 @@ public class TicketPool {
                 System.out.println("Ticket pool is full. Vendors are Waiting for customers to buy tickets...");
                 wait();
             }catch(InterruptedException e){
-                e.printStackTrace();
-                throw new RuntimeException(e.getMessage());
+                Thread.currentThread().interrupt();
+                throw new RuntimeException(e.getMessage(), e);
             }
 
         }
@@ -48,8 +53,8 @@ public class TicketPool {
                 System.out.println("No tickets available. Customers are waiting for vendors to release tickets...");
                 wait();
             }catch(InterruptedException e){
-                e.printStackTrace();
-                throw new RuntimeException(e.getMessage());
+                Thread.currentThread().interrupt();
+                throw new RuntimeException(e.getMessage(), e);
             }
         }
 
@@ -62,6 +67,8 @@ public class TicketPool {
         System.out.println("Current ticket pool size : " + ticketPool.size() + "\n");
         return ticket;
     }
+
+
 }
 
 

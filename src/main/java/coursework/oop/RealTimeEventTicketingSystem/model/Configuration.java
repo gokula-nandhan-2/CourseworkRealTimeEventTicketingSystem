@@ -1,4 +1,4 @@
-package coursework.oop.RealTimeEventTicketingSystem.configuration;
+package coursework.oop.RealTimeEventTicketingSystem.model;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,28 +10,32 @@ public class Configuration {
     private int ticketReleaseRate;
     private int customerRetrievalRate;
     private int maxTicketCapacity;
+    private int vendorCount;
+    private int customerCount;
 
+
+    public Configuration() {}
 
 
     public Configuration(int customerRetrievalRate) {
         this.customerRetrievalRate = customerRetrievalRate;
     }
 
-
     public Configuration(int totalTickets, int ticketReleaseRate) {
         this.totalTickets = totalTickets;
         this.ticketReleaseRate = ticketReleaseRate;
     }
 
-
-    public Configuration(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
+    public Configuration(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity, int vendorCount, int customerCount) {
         this.totalTickets = totalTickets;
         this.ticketReleaseRate = ticketReleaseRate;
         this.customerRetrievalRate = customerRetrievalRate;
         this.maxTicketCapacity = maxTicketCapacity;
+        this.vendorCount = vendorCount;
+        this.customerCount = customerCount;
     }
 
-    public int getTotalTicket() {
+    public int getTotalTickets() {
         return totalTickets;
     }
 
@@ -51,13 +55,23 @@ public class Configuration {
     }
 
 
+    public int getVendorCount() {
+        return vendorCount;
+    }
+
+
+    public int getCustomerCount() {
+        return customerCount;
+    }
+
+
     //save to json file
     public void saveFileToJson() {
         Gson gson = new Gson();
         try (FileWriter writeFile = new FileWriter("configuration.json")){
             gson.toJson(this, writeFile);
         }catch (IOException e){
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error saving configuration to JSON file",e);
         }
     }
 
@@ -67,8 +81,10 @@ public class Configuration {
             writeToTextFile.write("ticketReleaseRate : " + ticketReleaseRate + "\n");
             writeToTextFile.write("customerRetrievalRate : " + customerRetrievalRate + "\n");
             writeToTextFile.write("maximumTicketCapacity : " + maxTicketCapacity + "\n");
+            writeToTextFile.write("vendorCount : " + vendorCount + "\n");
+            writeToTextFile.write("customerCount : " + customerCount + "\n");
         }catch (IOException e){
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error saving configuration to text file",e);
         }
     }
 
@@ -78,11 +94,11 @@ public class Configuration {
         try(FileReader readFile = new FileReader("configuration.json")){
             return gson.fromJson(readFile, Configuration.class);
         }catch (IOException e){
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error loading configuration from JSON file",e);
         }
     }
 
-    public int getTotalTickets() {
-        return totalTickets;
-    }
+
+
+
 }

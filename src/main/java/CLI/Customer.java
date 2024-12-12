@@ -29,8 +29,9 @@ public class Customer implements Runnable {
             try{
                 Thread.sleep(customerRetrievalRate * 1000);
             } catch (InterruptedException e) {
-                if (!running)
+                if (!running){
                     break;
+                }
             }
         }
     }

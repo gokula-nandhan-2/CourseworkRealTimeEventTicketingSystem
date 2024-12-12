@@ -1,7 +1,5 @@
-package coursework.oop.RealTimeEventTicketingSystem.entity;
+package coursework.oop.RealTimeEventTicketingSystem.model;
 
-
-import coursework.oop.RealTimeEventTicketingSystem.configuration.Configuration;
 
 import java.time.LocalDateTime;
 
@@ -38,7 +36,7 @@ public class Customer implements Runnable {
     }
 
     public void stopThread() {
-        this.running = false; // Set the flag to false to stop the thread execution
+        this.running = false;
     }
 }
 

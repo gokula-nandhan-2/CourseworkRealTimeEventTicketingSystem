@@ -29,7 +29,7 @@ public class Main {
         // Initialize and start Customer threads
         for (int i = 1; i <= customerCount; i++) {
             Configuration tempConfig = new Configuration(customerRetrievalRate);
-            customers[i - 1] = new Customer(5, tempConfig,ticketPool);  // Retrieve tickets from the pool
+            customers[i - 1] = new Customer(20, tempConfig,ticketPool);  // Retrieve tickets from the pool
             Thread customerThread = new Thread(customers[i - 1], "Customer ID : " + i);
             customerThread.start();
         }
@@ -53,6 +53,7 @@ public class Main {
         }
 
         System.out.println("Simulation stopped!");
+        System.out.println("Exiting program!");
         System.exit(0);  // Exit the program after stopping the simulation
     }
 
@@ -62,9 +63,9 @@ public class Main {
 
         System.out.print("""
                 
-                ==================================================================================================
+                ==========================================================================================================
                                                - REAL TIME EVENT TICKETING SYSTEM - 
-                ==================================================================================================
+                ==========================================================================================================
                 
                 Welcome to the real time event ticketing system!
                 Please provide the following details to configure the system.
@@ -193,17 +194,14 @@ public class Main {
 
         // Start/Stop menu
         while (true) {
-            System.out.println("\n1 - Start Simulation");
-            System.out.println("2 - Stop Simulation and Exit");
-            System.out.print("Enter Number 1 to start the simulation : ");
+            System.out.println("\n---------REMINDER : PLEASE ENTER '2' TO STOP THE SIMULATION AND EXIT AFTER STARTING THE PROGRAM---------");
+            System.out.print("\nEnter Number 1 to start the simulation : ");
             int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
                     if (!isRunning) {
                         startSimulation(totalTickets, vendorCount, ticketReleaseRate, customerCount, customerRetrievalRate);
-                    } else {
-                        System.out.println("Simulation is already running.");
                     }
                     break;
                 case 2:
@@ -212,7 +210,6 @@ public class Main {
                     }
                     System.out.println("Exiting program.");
                     scanner.close();
-                    System.exit(0);
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");

@@ -22,14 +22,15 @@ public class Vendor implements Runnable {
     public void run() {
         for(int i = 0; i < totalTickets && running; i++) {
             int ticketId = ticketIdCounter.incrementAndGet();
-            Ticket ticket = new Ticket(ticketId,"Kanguva",1000);
+            Ticket ticket = new Ticket(ticketId,"Event Name",1000);
             ticket.setReleasedDateTime(LocalDateTime.now());
             ticketPool.addTicket(ticket);
             try{
                 Thread.sleep(ticketReleaseRate * 1000);
             }catch(InterruptedException e){
-                if (!running)
+                if (!running){
                     break;
+                }
             }
         }
     }

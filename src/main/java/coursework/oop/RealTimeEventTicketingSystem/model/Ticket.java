@@ -1,4 +1,4 @@
-package coursework.oop.RealTimeEventTicketingSystem.entity;
+package coursework.oop.RealTimeEventTicketingSystem.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
