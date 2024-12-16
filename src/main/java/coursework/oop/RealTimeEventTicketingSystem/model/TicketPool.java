@@ -7,10 +7,7 @@ import java.util.List;
 
 public class TicketPool {
     static List<Ticket> ticketPool;
-    private int maximumCapacity;
-
-
-
+    private int maximumCapacit
 
     public TicketPool(Configuration configMaxCapacity) {
         this.maximumCapacity = configMaxCapacity.getMaxTicketCapacity();

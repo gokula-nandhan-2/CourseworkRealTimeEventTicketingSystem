@@ -23,8 +23,9 @@ public class SimulationService {
         customers = new Customer[customerCount];
 
         for (int i = 0; i < vendorCount; i++) {
-            vendors[i] = new Vendor(config, config, ticketPool, status);
+            vendors[i] = new Vendor(config, config, ticketPool);
         }
+
 
         for (int i = 0; i < customerCount; i++) {
             customers[i] = new Customer(20, config, ticketPool);
@@ -72,4 +73,6 @@ public class SimulationService {
         status.setRemainingTicketPoolSize(ticketPool.getRemainingCapacity());
         return status;
     }
+
+
 }

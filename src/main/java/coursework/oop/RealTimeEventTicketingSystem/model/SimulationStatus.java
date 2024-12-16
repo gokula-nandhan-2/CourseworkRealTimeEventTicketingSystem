@@ -1,7 +1,7 @@
 package coursework.oop.RealTimeEventTicketingSystem.model;
 
 
-import static coursework.oop.RealTimeEventTicketingSystem.model.TicketPool.ticketPool;
+
 
 public class SimulationStatus {
     private boolean isRunning;
@@ -9,19 +9,8 @@ public class SimulationStatus {
     private int remainingTicketsToAdd;
     private int ticketPoolSize;
     private int remainingTicketPoolSize;
-    private int totalTickets;
-    private int maxTicketCapacity;
 
-    public SimulationStatus() {
-
-    }
-
-    public SimulationStatus(int totalTickets,int maxTicketCapacity) {
-        this.totalTickets = totalTickets;
-        this.totalTicketsAdded = 0;
-        this.remainingTicketsToAdd = totalTickets;
-        this.maxTicketCapacity = maxTicketCapacity;
-    }
+    public SimulationStatus() {}
 
     public SimulationStatus(boolean isRunning, int totalTicketsAdded, int remainingTicketsToAdd, int ticketPoolSize, int remainingTicketPoolSize) {
         this.isRunning = isRunning;
@@ -46,7 +35,6 @@ public class SimulationStatus {
 
     public void setTotalTicketsAdded(int totalTicketsAdded) {
         this.totalTicketsAdded = totalTicketsAdded;
-        this.remainingTicketsToAdd = totalTickets - totalTicketsAdded;
     }
 
     public int getRemainingTicketsToAdd() {
@@ -62,7 +50,7 @@ public class SimulationStatus {
     }
 
     public void setTicketPoolSize(int ticketPoolSize) {
-        this.ticketPoolSize = ticketPool.size();
+        this.ticketPoolSize = ticketPoolSize;
     }
 
     public int getRemainingTicketPoolSize() {
@@ -71,7 +59,6 @@ public class SimulationStatus {
 
     public void setRemainingTicketPoolSize(int remainingTicketPoolSize) {
         this.remainingTicketPoolSize = remainingTicketPoolSize;
-        this.remainingTicketPoolSize = maxTicketCapacity - ticketPoolSize;
     }
 
     @Override
